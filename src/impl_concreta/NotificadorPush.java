@@ -4,7 +4,12 @@ import clases_ocp.NotificadorBase;
 import clases_srp.ValidadorDispositivoId;
 import interfaces_isp.IEnviadorPush;
 
-class NotificadorPush extends NotificadorBase implements IEnviadorPush {
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class NotificadorPush extends NotificadorBase implements IEnviadorPush {
+
+    private static final Logger logger = Logger.getLogger(NotificadorPush.class.getName());
 
     public NotificadorPush() {
         super(new ValidadorDispositivoId());
@@ -18,10 +23,10 @@ class NotificadorPush extends NotificadorBase implements IEnviadorPush {
     @Override
     public void enviarNotificacionPush(String dispositivoId, String titulo, String cuerpo) {
         // Simulación de envío de notificación push
-        System.out.println("🔔 PUSH enviado:");
-        System.out.println("   Dispositivo: " + dispositivoId);
-        System.out.println("   Título: " + titulo);
-        System.out.println("   Mensaje: " + cuerpo);
-        System.out.println();
+
+        logger.log(Level.INFO, "PUSH enviado");
+        logger.log(Level.INFO, "Dispositivo: {0}", dispositivoId);
+        logger.log(Level.INFO, "Título: {0}", titulo);
+        logger.log(Level.INFO, "Mensaje: {0}", cuerpo);
     }
 }

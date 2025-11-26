@@ -4,7 +4,12 @@ import clases_ocp.NotificadorBase;
 import clases_srp.ValidadorTelefono;
 import interfaces_isp.IEnviadorSMS;
 
-class NotificadorSMS extends NotificadorBase implements IEnviadorSMS {
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class NotificadorSMS extends NotificadorBase implements IEnviadorSMS {
+
+    private static final Logger logger = Logger.getLogger(NotificadorSMS.class.getName());
 
     public NotificadorSMS() {
         super(new ValidadorTelefono());
@@ -18,9 +23,8 @@ class NotificadorSMS extends NotificadorBase implements IEnviadorSMS {
     @Override
     public void enviarSMS(String telefono, String mensaje) {
         // Simulación de envío de SMS
-        System.out.println("📱 SMS enviado:");
-        System.out.println("   Para: " + telefono);
-        System.out.println("   Mensaje: " + mensaje);
-        System.out.println();
+        logger.log(Level.INFO, "SMS enviado");
+        logger.log(Level.INFO, "Para: {0}", telefono);
+        logger.log(Level.INFO, "Mensaje: {0}", mensaje);
     }
 }
